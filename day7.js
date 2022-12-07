@@ -1,11 +1,6 @@
 var day7 = (() => {
     let lineIsCommand = (line) => line.match(/^\$ /);
 
-    let getUniqueSuffix = (() => {
-        let count = 0
-        return () => ++count;
-    })();
-
     let mapDirectoryNamesToSizes = (directory, parentKey = '') => {
         let map = {};
         let currentDirSize = 0;
@@ -28,6 +23,7 @@ var day7 = (() => {
                 return;
             }
 
+            // if we get here, `value` was a file size
             currentDirSize += parseInt(value, 10);
         });
 
@@ -90,8 +86,6 @@ var day7 = (() => {
         let maxSize = 100000;
 
         return Object.values(allSizes).reduce((a, e) => e <= maxSize ? (a + e) : a, 0);
-
-        return allSizes;
     };
 
     // find the smallest directory to delete that would achieve the required free disk space
