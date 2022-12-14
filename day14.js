@@ -56,11 +56,6 @@ var day14 = (() => {
     let getAccumulatedGrainsOfSand = (grid) => {
         let iterations = 0;
         while (true) {
-            if (iterations > 30000) {
-                assert(false, 'infinite loop maybe');
-                break;
-            }
-
             let sandPosition = [0, 500];
             let nextSandPosition;
             while (nextSandPosition = getNextPossibleSandPosition(grid, sandPosition)) {
@@ -80,8 +75,6 @@ var day14 = (() => {
             grid[sandPosition[0]][sandPosition[1]] = 'o';
             iterations++;
         }
-
-        assert(false);
     };
 
     let part2 = (rawInput) => {
