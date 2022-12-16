@@ -5,7 +5,7 @@ let assert = (assertion, message) => {
     }
 };
 
-let today = 14;
+let today = 15;
 let chosenDay = today;
 
 let loadDay = (() => {
@@ -116,6 +116,19 @@ let arrayChunk = (arr, chunkSize = 1) => {
     }
 
     return result;
+};
+
+let rangeToArray = (start, end, step = 1) => {
+    assert(step !== 0, '`step` cannot be 0');
+    assert((start < end && step > 0) || (start > end && step < 0) || start === end, '`step` must lead from `start` to `end`');
+
+    let [sortedStart, sortedEnd] = [start,end].sort(numericSortLowestToHighestComparator);
+    let result = [];
+    for (let i = sortedStart; i <= sortedEnd; i += Math.abs(step)) {
+        result.push(i);
+    }
+
+    return step > 0 ? result : result.reverse();
 };
 
 let stringToLetterSet = (str) => {
