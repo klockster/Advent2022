@@ -22,6 +22,8 @@ var day16 = (() => {
     // I either got stuck in a weird rut of thinking that I couldn't escape
     // or was painfully unaware of some algorithm that's often used for these sorts of things
 
+    // because of the way it culls the stacks it may not work on all inputs
+
     let naiveWithElephant = (valves) => {
         let stack = [{
             positions: [
