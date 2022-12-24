@@ -5,7 +5,8 @@ let assert = (assertion, message) => {
     }
 };
 
-let today = 23;
+let today = 24;
+// let chosenDay = 22;
 let chosenDay = today;
 
 let loadDay = (() => {
@@ -28,14 +29,14 @@ let loadDay = (() => {
 })();
 
 // setup looking at any given day:
-let addDayOptions = (() => {
+(() => {
     let select = document.querySelector(".current-day")
 
     for (let i = 1; i <= today; i++) {
         let option = document.createElement('option');
         option.innerText = i;
         option.value = i;
-        if (i === today) {
+        if (i === chosenDay) {
             option.selected = true;
         }
         select.appendChild(option);
@@ -63,7 +64,7 @@ let chooseDay = (dayNum) => {
     loadDay(chosenDay, afterDayLoad);
 };
 
-chooseDay(today);
+chooseDay(chosenDay);
 
 document.querySelector(".current-day").addEventListener('change', e => {
     chooseDay(parseInt(e.target.value, 10));
@@ -129,6 +130,14 @@ let rangeToArray = (start, end, step = 1) => {
     }
 
     return step > 0 ? result : result.reverse();
+};
+
+let objectFlip = (obj) => {
+    let result = {};
+    Object.entries(obj).forEach(([key, val]) => {
+        result[val] = key;
+    });
+    return result;
 };
 
 let stringToLetterSet = (str) => {
